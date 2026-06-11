@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SYSTEM_CORE // Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            scrollbar-width: thin;
+            scrollbar-color: #3b494c #131314;
+        }
+        body {
+            background-color: #050505; /* Level 0 Background per Style Guidance */
+            color: #e5e2e3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #00daf3; /* Primary Electric Blue */
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #00daf3;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .syntax-string { color: #8dffb9; } /* Secondary Neon Mint */
+        .syntax-keyword { color: #dcb8ff; } /* Tertiary Fixed Dim */
+        .syntax-fn { color: #00daf3; } /* Primary Electric Blue */
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131314",
+                        "on-error": "#690005",
+                        "on-tertiary": "#480081",
+                        "on-secondary-fixed-variant": "#00522e",
+                        "surface-container-highest": "#353436",
+                        "surface-container": "#201f20",
+                        "primary-container": "#00e5ff",
+                        "on-primary-container": "#00626e",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-tint": "#00daf3",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-surface": "#e5e2e3",
+                        "tertiary": "#f7e8ff",
+                        "outline": "#849396",
+                        "secondary-fixed": "#57ffa6",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#2a2a2b",
+                        "tertiary-fixed": "#efdbff",
+                        "on-background": "#e5e2e3",
+                        "tertiary-container": "#e3c5ff",
+                        "surface": "#131314",
+                        "on-tertiary-fixed-variant": "#6700b5",
+                        "tertiary-fixed-dim": "#dcb8ff",
+                        "secondary": "#8dffb9",
+                        "on-primary-fixed-variant": "#004f58",
+                        "surface-bright": "#3a393a",
+                        "primary": "#c3f5ff",
+                        "error-container": "#93000a",
+                        "secondary-container": "#01e98e",
+                        "on-primary": "#00363d",
+                        "on-tertiary-fixed": "#2c0051",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1c1b1c",
+                        "inverse-on-surface": "#313031",
+                        "surface-dim": "#131314",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary-container": "#006339",
+                        "on-primary-fixed": "#001f24",
+                        "inverse-primary": "#006875",
+                        "outline-variant": "#3b494c",
+                        "on-surface-variant": "#bac9cc",
+                        "on-tertiary-container": "#7f17d7",
+                        "secondary-fixed-dim": "#00e38a",
+                        "surface-variant": "#353436",
+                        "on-secondary": "#00391e",
+                        "on-secondary-fixed": "#002110",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "stack-md": "24px",
+                        "unit": "4px",
+                        "stack-lg": "64px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "code-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary-fixed-dim">SYSTEM_CORE</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b border-primary font-label-md text-label-md transition-colors duration-300" href="portfolio.html">ROOT</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="project.html">PROJECTS</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="technicalstack.html">STACK</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="connect.html">CONNECT</a>
+</nav>
+<a  href="./resume/Prosper_Onwudiegwu_resume.pdf"
+ download
+ class="bg-primary-container text-on-primary-container px-4 py-2 rounded font-label-md text-label-md font-bold active:scale-95 transition-transform">
+                RESUME.PDF
+</a>
+</div>
+</header>
+<!-- Sidebar Navigation (Drawer) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/20 pt-24 z-40">
+<div class="mb-2">
+    <a href="farmers image.jpeg" target="_blank" class="inline-block">
+        <img
+            src="farmers image.jpeg"
+            alt="Prosper Onwudiegwu"
+            class="w-12 h-12 rounded-full object-cover  border-secondary cursor-pointer hover:scale-105 transition"
+        >
+    </a>
+</div>
+<p class="font-code-sm text-code-sm font-bold text-secondary">@backend_dev</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Architecture &amp; APIs</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-4 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">home</span>
+<a class="font-code-sm text-code-sm" href="portfolio.html">ROOT</a>
+</div>
+<div class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-high flex items-center gap-4 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all rounded-lg">
+<span class="material-symbols-outlined">folder_open</span>
+<a class="font-code-sm text-code-sm" href="project.html">PROJECTS</a>
+</div>
+<div class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-high flex items-center gap-4 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all rounded-lg">
+<span class="material-symbols-outlined">memory</span>
+<a class="font-code-sm text-code-sm" href="technicalstack.html">STACK</a>
+</div>
+<div class="text-on-surface-variant hover:text-on-surface mx-2 hover:bg-surface-container-high flex items-center gap-4 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all rounded-lg">
+<span class="material-symbols-outlined">terminal</span>
+<a class="font-code-sm text-code-sm" href="connect.html">CONNECT</a>
+</div>
+</div>
+<div class="mt-auto p-6">
+<span class="font-code-sm text-code-sm text-outline-variant">v2.0.4</span>
+</div>
+</aside>
+<main class="lg:ml-72 pt-32 pb-20">
+<!-- Hero Section -->
+<section class="px-gutter max-w-container-max mx-auto mb-stack-lg">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest border border-outline-variant/20 p-8 md:p-16">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#3b494c 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high border border-outline-variant/30 mb-6">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-secondary">STATUS: READY_TO_BUILD</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6 max-w-3xl">
+                        Building <span class="text-primary-fixed-dim">Robust Backends.</span><br/>
+                        Crafting Seamless Frontends.<span class="terminal-cursor"></span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
+                        Architecting high-performance systems with a focus on scalability, security, and developer experience. From database schemas to pixel-perfect interfaces.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a 
+href="https://wa.me/2349166078066"
+target="_blank"
+class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded font-label-md text-label-md font-bold hover:shadow-[0_0_20px_rgba(1,233,142,0.3)] transition-all active:scale-95">
+                            INITIATE_PROJECT
+</a>
+<a
+href="https://github.com/Darcpee/AGROBRIDGE-FRONTEND"
+target="_blank"
+ class="border border-primary text-primary px-8 py-4 rounded font-label-md text-label-md font-bold hover:bg-primary/5 transition-all active:scale-95">
+                            VIEW_SOURCE
+                    </a>
+</div>
+</div>
+<!-- Abstract Code Decoration -->
+<div class="hidden xl:block absolute top-12 right-12 w-96 font-code-sm text-code-sm opacity-40 select-none">
+<pre class="glass-card p-6 rounded-lg border-outline-variant/10 text-on-surface-variant overflow-hidden"><span class="syntax-keyword">const</span> <span class="syntax-fn">deploy</span> = <span class="syntax-keyword">async</span> () =&gt; {
+  <span class="syntax-keyword">try</span> {
+    <span class="syntax-keyword">await</span> core.<span class="syntax-fn">initialize</span>();
+    <span class="syntax-keyword">await</span> db.<span class="syntax-fn">connect</span>({
+      cluster: <span class="syntax-string">'primary-node'</span>,
+      auth: process.env.KEY
+    });
+    <span class="syntax-fn">console</span>.<span class="syntax-fn">log</span>(<span class="syntax-string">'SYSTEM_ONLINE'</span>);
+  } <span class="syntax-keyword">catch</span> (err) {
+    <span class="syntax-fn">panic</span>(err);
+  }
+};</pre>
+</div>
+</div>
+</section>
+<!-- Tech Stack Bento -->
+<section class="px-gutter max-w-container-max mx-auto mb-stack-lg">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-md flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">memory</span>
+                TECH_STACK
+            </h3>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+<!-- Node.js -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="Node.js" class="w-full h-full object-contain filter grayscale brightness-125 hover:grayscale-0 transition-all duration-300" src="IMAGENODEJS.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Node.js</span>
+</div>
+<!-- Express -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="Express" class="w-full h-full object-contain filter invert opacity-80 hover:opacity-100 transition-all duration-300" src="IMAGEEXPRESSJS.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Express.JS</span>
+</div>
+<!-- JavaScript -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="JavaScript" class="w-full h-full object-contain rounded-sm" src="IMAGEJAVASCRIPT.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">JavaScript</span>
+</div>
+<!-- Tailwind -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="Tailwind CSS" class="w-full h-full object-contain" src="IMAGETAILWINDcss.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Tailwind</span>
+</div>
+<!-- HTML -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="HTML5" class="w-full h-full object-contain" src="IMAGEHTML.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">HTML5</span>
+</div>
+<!-- CSS -->
+<div class="glass-card p-6 flex flex-col items-center justify-center text-center gap-4">
+<div class="w-16 h-16 bg-surface-container-high/50 rounded-lg flex items-center justify-center p-3">
+<img alt="CSS3" class="w-full h-full object-contain" src="IMAGECSS.jpeg"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">CSS3</span>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="px-gutter max-w-container-max mx-auto mb-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-end mb-stack-md gap-4">
+<h3 class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">folder_open</span>
+                    FEATURED_PROJECTS
+                </h3>
+<a class="font-code-sm text-code-sm text-primary hover:underline underline-offset-4" href="https://github.com/Darcpee?tab=repositories">VIEW_ALL_REPOS</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project Card 1 -->
+<div class="glass-card group overflow-hidden flex flex-col">
+<div class="h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" data-alt="A high-tech server room with glowing blue and green led lights on server racks, creating a cinematic terminal noir aesthetic. The environment is dark and filled with atmospheric fog, reflecting a sophisticated backend engineering environment. Sharp focus on technical hardware with a minimalist dark mode color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnT16KRj9Xc6Ep4qrFFZxJKZFK03mWK90J5taK3fp0oxpxTFGna1aG3SuxGuwXu2ZeY84Rlc6fwRlCNyYdn5UDKxfBCb2qgexxPPk4OQCAOdu1vhJ0jZiTh9Yb-26ck9ZQI0njd75W0Z7E7fAam9VWbTmP4BlbppBvsXco4YD-dBgk9eResiwd5prs0EdV4M1cRjtzNpdtjDZUYzzhsXBZgLYESA6J4zL7kj3beAM9Td6ChF180rD8tg_G4WRx4BBrP1GSxo-1-j8"/>
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-on-tertiary-fixed-variant/20 text-tertiary-fixed-dim font-code-sm text-code-sm rounded">REDIS</span>
+<span class="px-2 py-1 bg-on-primary-fixed-variant/20 text-primary-fixed-dim font-code-sm text-code-sm rounded">NODEJS</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface mb-3">Real-time API Engine</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            A high-throughput WebSocket-based engine capable of processing 100k+ concurrent events per second with sub-5ms latency.
+                        </p>
+<div class="flex items-center gap-4 mt-auto">
+<span class="material-symbols-outlined text-primary cursor-pointer">open_in_new</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface">code</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="glass-card group overflow-hidden flex flex-col">
+<div class="h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" data-alt="A macro shot of a computer screen displaying complex css code with vibrant syntax highlighting in neon green and purple. The background is deep obsidian black, capturing a professional developer's workspace at night. The lighting is low-key and high-contrast, emphasizing precision and modern UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOqSGqOomdoXRQC3C4iDL-xdZg8nw65jFX1hSYVm5gvYQGBJFsEhdRGh8snnKuIYcZrO9ywVFAJLHjivN7hVdFtVmCvAOK_uD8tJrX1L23G_a26xs3OcrX1CTGO-xFxlgFOUoBweQNYVCQpuyhuVGtMwQ6V79mxwXmRBEqkeuqf_jQQl32JBiJikNnGHWXo1SwGmQBEQPUZuGsFuirwpu6ZgSvX5AYGu1KK_r1NqXkXR4Su2cvhNpQFdtz5MfcraviBBSNN3bi8TU"/>
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-on-secondary-fixed-variant/20 text-secondary-fixed-dim font-code-sm text-code-sm rounded">POSTCSS</span>
+<span class="px-2 py-1 bg-on-primary-fixed-variant/20 text-primary-fixed-dim font-code-sm text-code-sm rounded">UI/UX</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface mb-3">Custom CSS Framework</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            A utility-first CSS framework built for massive design systems, featuring automatic tree-shaking and dynamic design tokens.
+                        </p>
+<div class="flex items-center gap-4 mt-auto">
+<span class="material-symbols-outlined text-primary cursor-pointer">open_in_new</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-on-surface">code</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-gutter max-w-container-max mx-auto mb-stack-lg">
+<div class="glass-card p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">Let's build something scalable.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto">
+                    Currently accepting new collaborations for Q4 2024. Open to backend architecture and full-stack engineering roles.
+                </p>
+<a href="https://wa.me/2349166078066"
+class="bg-primary text-on-primary px-10 py-5 rounded-lg font-headline-lg text-headline-lg font-bold hover:shadow-[0_0_30px_rgba(195,245,255,0.4)] transition-all active:scale-95">
+                    ESTABLISH_CONNECTION
+</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 py-12 lg:ml-72">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tighter">SYSTEM_CORE</h1>
+<p class="font-code-sm text-code-sm text-tertiary-fixed-dim">© 2024 DEPLOY_LOG: SUCCESS</p>
+</div>
+<div class="flex gap-8">
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://github.com/Darcpee">GITHUB</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://www.linkedin.com/in/prosper-onwudiegwu-b733b23aa?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LINKEDIN</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://github.com/Darcpee/AGROBRIDGE-FRONTEND">SOURCE</a>
+</div>
+</div>
+</footer>
+<!-- Atmosphere micro-interaction script -->
+<script src="./js/portfolio.js"></script>
+</body></html>

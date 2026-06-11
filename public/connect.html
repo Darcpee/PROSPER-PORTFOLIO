@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CONNECT // SYSTEM_CORE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131314",
+                        "on-error": "#690005",
+                        "on-tertiary": "#480081",
+                        "on-secondary-fixed-variant": "#00522e",
+                        "surface-container-highest": "#353436",
+                        "surface-container": "#201f20",
+                        "primary-container": "#00e5ff",
+                        "on-primary-container": "#00626e",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-tint": "#00daf3",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-surface": "#e5e2e3",
+                        "tertiary": "#f7e8ff",
+                        "outline": "#849396",
+                        "secondary-fixed": "#57ffa6",
+                        "primary-fixed-dim": "#00daf3",
+                        "surface-container-high": "#2a2a2b",
+                        "tertiary-fixed": "#efdbff",
+                        "on-background": "#e5e2e3",
+                        "tertiary-container": "#e3c5ff",
+                        "surface": "#131314",
+                        "on-tertiary-fixed-variant": "#6700b5",
+                        "tertiary-fixed-dim": "#dcb8ff",
+                        "secondary": "#8dffb9",
+                        "on-primary-fixed-variant": "#004f58",
+                        "surface-bright": "#3a393a",
+                        "primary": "#c3f5ff",
+                        "error-container": "#93000a",
+                        "secondary-container": "#01e98e",
+                        "on-primary": "#00363d",
+                        "on-tertiary-fixed": "#2c0051",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#1c1b1c",
+                        "inverse-on-surface": "#313031",
+                        "surface-dim": "#131314",
+                        "primary-fixed": "#9cf0ff",
+                        "on-secondary-container": "#006339",
+                        "on-primary-fixed": "#001f24",
+                        "inverse-primary": "#006875",
+                        "outline-variant": "#3b494c",
+                        "on-surface-variant": "#bac9cc",
+                        "on-tertiary-container": "#7f17d7",
+                        "secondary-fixed-dim": "#00e38a",
+                        "surface-variant": "#353436",
+                        "on-secondary": "#00391e",
+                        "on-secondary-fixed": "#002110",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "stack-md": "24px",
+                        "unit": "4px",
+                        "stack-lg": "64px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["JetBrains Mono"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(18, 18, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: #00daf3;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background-color: #00e5ff;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<span class="font-headline-lg text-headline-lg font-bold tracking-tighter text-primary-fixed-dim">SYSTEM_CORE</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="portfolio.html">ROOT</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="projects.html">PROJECTS</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="technicalstack.html">STACK</a>
+<a class="text-primary font-bold border-b border-primary font-label-md text-label-md" href="connect.html">CONNECT</a>
+</nav>
+<a 
+href="./resume/prosper_onwudiegwu_resume.pdf"
+download=""
+class="font-label-md text-label-md bg-primary-container text-on-primary-container px-4 py-2 rounded-lg active:scale-95 transition-transform">
+                RESUME.PDF
+</a>
+</div>
+</header>
+<!-- Navigation Drawer (Desktop Sidebar) -->
+<aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/20 z-40 pt-24">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+ <a href="farmers image.jpeg" target="_blank" class="inline-block">
+        <img
+            src="farmers image.jpeg"
+            alt="Prosper Onwudiegwu"
+            class="w-12 h-12 rounded-full object-cover  border-secondary cursor-pointer hover:scale-105 transition"
+        >
+    </a>
+</div>
+<div>
+<div class="font-code-sm text-code-sm font-bold text-secondary">@backend_dev</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Architecture &amp; APIs</div>
+</div>
+</div>
+<div class="text-[10px] font-code-sm text-outline">v2.0.4</div>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<a class="font-code-sm text-code-sm" href="portfolio.html">ROOT</a>
+</div>
+<div class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<a class="font-code-sm text-code-sm" href="projects.html">PROJECTS</a>
+</div>
+<div class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-3 cursor-pointer active:bg-surface-container-highest transition-all flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<a class="font-code-sm text-code-sm" href="technicalstack.html">STACK</a>
+</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-lg mx-2 px-4 py-3 cursor-pointer transition-all flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<a class="font-code-sm text-code-sm" href="connect.html">CONNECT</a>
+</div>
+</nav>
+</aside>
+<main class="lg:ml-72 pt-32 pb-24 px-gutter">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<section class="mb-16">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/10 border border-secondary-container/20 rounded-full mb-6">
+<span class="relative flex h-2 w-2">
+<span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+</span>
+<span class="font-code-sm text-code-sm text-secondary">Status: Available for hire</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-4">
+                    ESTABLISH_CONNECTION<span class="terminal-cursor"></span>
+</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-2xl">
+                    Ready to build scalable architectures or discuss complex backend logic. Reach out for collaborations or project inquiries.
+                </p>
+</section>
+<!-- Layout Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Contact Form (Bento Large) -->
+<div class="md:col-span-8 glass-card rounded-xl p-8">
+<form class="space-y-8" id="contact-form">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="relative group">
+<label class="block font-code-sm text-code-sm text-outline-variant mb-2 group-focus-within:text-primary transition-colors">USER_NAME</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary focus:ring-0 text-on-surface font-body-md py-2 transition-all" placeholder="e.g. Alan Turing" type="text"/>
+</div>
+<div class="relative group">
+<label class="block font-code-sm text-code-sm text-outline-variant mb-2 group-focus-within:text-primary transition-colors">USER_EMAIL</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary focus:ring-0 text-on-surface font-body-md py-2 transition-all" placeholder="dev@null.com" type="email"/>
+</div>
+</div>
+<div class="relative group">
+<label class="block font-code-sm text-code-sm text-outline-variant mb-2 group-focus-within:text-primary transition-colors">MESSAGE_PAYLOAD</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant/50 focus:border-primary focus:ring-0 text-on-surface font-body-md py-2 transition-all resize-none" placeholder="Describe your project architecture..." rows="4"></textarea>
+</div>
+<a href="https://wa.me/2348012345678"
+target="_blank"
+class="group flex items-center gap-3  bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-primary-fixed-dim active:scale-95 transition-all" type="submit">
+                            TRANSMIT_DATA
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="send">send</span>
+</a>
+</form>
+</div>
+<!-- Sidebar Info (Bento Small) -->
+<div class="md:col-span-4 space-y-6">
+<!-- Direct Contact Card -->
+<div class="glass-card rounded-xl p-6">
+<h3 class="font-code-sm text-code-sm text-primary mb-4">DIRECT_ACCESS</h3>
+<div class="space-y-4">
+<a class="flex items-center justify-between group" href="https://github.com/Darcpee">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">GITHUB</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary-fixed-dim transition-colors" data-icon="code">code</span>
+</a>
+<a class="flex items-center justify-between group" href="https://www.linkedin.com/in/prosper-onwudiegwu-b733b23aa?utm_source=share_via&utm_content=profile&utm_medium=member_ios">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">LINKEDIN</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary-fixed-dim transition-colors" data-icon="share">share</span>
+</a>
+<a class="flex items-center justify-between group" href="mailto:prosperonwudiegwu2@gmail.com">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface transition-colors">EMAIL</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary-fixed-dim transition-colors" data-icon="alternate_email">alternate_email</span>
+</a>
+</div>
+</div>
+<!-- Visual Accent Card -->
+<div class="glass-card rounded-xl p-6 aspect-square flex flex-col items-center justify-center relative overflow-hidden text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<img class="w-full h-full object-cover grayscale" data-alt="A macro shot of a server circuit board with neon green and electric blue indicator lights glowing in a dark data center environment. The image emphasizes technical precision, hardware architecture, and a high-tech minimalist aesthetic consistent with a professional developer portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPhKSV-Njjs8rKehUOgcr-JDlkt5K-6HS-j7mtVTmO5r147n_fLga7hR2QNrdNn9_nNZ2qxvp7E1N2V1KbncJnnnaoppEcTIRHmXwCs6tDh8gQtmizUHUDr8K5_o4dxmuA2vcriOVh2134v0o7rALuKi2bSkC3LITP97IIIwGlX4ZNifvyrFdUyHqQXoMm6HYK_39aMPBABKNEBMwrM6bNbaJAjPsk9PqRx3Ag0MGd_rsxBPdp7AM4bh7ONL6WpffeDL-qJXELBiA"/>
+</div>
+<span class="material-symbols-outlined text-headline-xl text-primary mb-4" data-icon="token" style="font-variation-settings: 'FILL' 1;">token</span>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Response Latency:<br/><span class="text-secondary">&lt; 24 Hours</span></p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="lg:ml-72 bg-surface-container-lowest border-t border-outline-variant/30 py-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-gutter max-w-container-max mx-auto gap-8">
+<div class="font-code-sm text-code-sm text-tertiary-fixed-dim">© 2024 DEPLOY_LOG: SUCCESS</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant font-code-sm text-code-sm hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://github.com/Darcpee" target="_blank">GITHUB</a>
+<a class="text-on-surface-variant font-code-sm text-code-sm hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://www.linkedin.com/in/prosper-onwudiegwu-b733b23aa?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank">LINKEDIN</a>
+<a class="text-on-surface-variant font-code-sm text-code-sm hover:text-secondary-fixed-dim transition-colors hover:underline decoration-secondary-fixed-dim underline-offset-4" href="https://github.com/Darcpee" target="_blank">SOURCE</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-background/95 backdrop-blur-xl border-t border-outline-variant/30 z-50">
+<div class="flex justify-around items-center py-4">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-label-md">ROOT</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="text-[10px] font-label-md">PROJECTS</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-[10px] font-label-md font-bold">CONNECT</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="text-[10px] font-label-md">STACK</span>
+</button>
+</div>
+</div>
+<script src="./js/connect.js"></script>
+</body></html>
