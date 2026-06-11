@@ -1,4 +1,4 @@
-Simple intersection observer for skill bar animations
+// Simple intersection observer for skill bar animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
