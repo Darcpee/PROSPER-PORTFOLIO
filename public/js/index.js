@@ -22,3 +22,13 @@ document.addEventListener('mousemove', (e) => {
         
         /* Typing effect would go here if needed to be dynamic, 
            otherwise the CSS cursor provides the vibe. */
+
+
+
+        //    
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+});
