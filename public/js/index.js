@@ -25,25 +25,32 @@ document.addEventListener('mousemove', (e) => {
 
 
 
-        //    
+        //handle mobile menu    
 const menuBtn = document.getElementById("menuBtn");
-const closeBtn = document.getElementById("closeBtn");
+const closeBtn = document.getElementById("close-menu");
 const mobileMenu = document.getElementById("mobileMenu");
-// close menu
-closeBtn.addEventListener("click", () =>{
-    mobileMenu.classList.toggle("hidden");
-})
-// open menu
+
+// Open Menu
 menuBtn.addEventListener("click", (e) => {
     e.stopPropagation();
-    mobileMenu.classList.toggle("hidden");
-})
+    mobileMenu.classList.remove("hidden");
+});
 
-// outside click
+// Close Menu Button
+closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden");
+});
+
+// Click Outside Menu
 document.addEventListener("click", (e) => {
-if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-menu.classList.add("hidden");
-}
+
+    if (
+        !mobileMenu.contains(e.target) &&
+        !menuBtn.contains(e.target)
+    ) {
+        mobileMenu.classList.add("hidden");
+    }
+
 });
 
 
