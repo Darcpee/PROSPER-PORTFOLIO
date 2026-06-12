@@ -159,26 +159,29 @@
             </h1>
         </div>
 
+
+
+
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center gap-6">
 
             <nav class="flex items-center gap-6">
-                <a class="text-primary font-bold border-b border-primary"
-                    href="portfolio.html">
+                <a class="text-primary font-bold border-b border-primary font-label-md text-label-md"
+                    href="index.html">
                     ROOT
                 </a>
 
-                <a class="text-on-surface-variant hover:text-primary transition-colors"
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300"
                     href="project.html">
                     PROJECTS
                 </a>
 
-                <a class="text-on-surface-variant hover:text-primary transition-colors"
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300"
                     href="technicalstack.html">
                     STACK
                 </a>
 
-                <a class="text-on-surface-variant hover:text-primary transition-colors"
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300"
                     href="connect.html">
                     CONNECT
                 </a>
@@ -204,26 +207,32 @@
     <!-- Mobile Menu -->
     <div id="mobileMenu"
         class="hidden md:hidden bg-surface-container-low border-t border-outline-variant/30">
-
+          <!-- CLOSE BUTTON -->
+<div class="flex justify-between items-center mb-4">
+    <span class="text-white font-semibold">Menu</span>
+    <button id="close-menu">
+      <i class="fa-solid fa-xmark text-white text-lg"></i> 
+</button>
+</div>
         <div class="flex flex-col p-4 gap-4">
 
-            <a href="portfolio.html"
-                class="text-primary font-bold">
+            <a href="index.html"
+                class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300">
                 ROOT
             </a>
 
             <a href="project.html"
-                class="text-on-surface-variant hover:text-primary">
+                class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300">
                 PROJECTS
             </a>
 
             <a href="technicalstack.html"
-                class="text-on-surface-variant hover:text-primary">
+                class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300">
                 STACK
             </a>
 
             <a href="connect.html"
-                class="text-on-surface-variant hover:text-primary">
+                class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300">
                 CONNECT
             </a>
 
@@ -232,12 +241,12 @@
                 class="bg-primary-container text-on-primary-container px-4 py-2 rounded text-center font-bold">
                 RESUME.PDF
             </a>
-
-        </div>
-
-    </div>
-
+      </div>
+</div>
 </header>
+
+
+
 <!-- Sidebar Navigation (Drawer) -->
 <aside class="hidden lg:flex flex-col h-screen fixed left-0 top-0 h-full w-72 bg-surface-container-lowest border-r border-outline-variant/20 pt-24 z-40">
 <div class="mb-2">

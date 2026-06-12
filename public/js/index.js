@@ -27,8 +27,23 @@ document.addEventListener('mousemove', (e) => {
 
         //    
 const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn");
 const mobileMenu = document.getElementById("mobileMenu");
-
-menuBtn.addEventListener("click", () => {
+// close menu
+closeBtn.addEventListener("click", () =>{
     mobileMenu.classList.toggle("hidden");
+})
+// open menu
+menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.toggle("hidden");
+})
+
+// outside click
+document.addEventListener("click", (e) => {
+if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+menu.classList.add("hidden");
+}
 });
+
+
