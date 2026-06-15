@@ -22,3 +22,34 @@
                 });
             });
         });
+
+
+         //handle mobile menu    
+const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("close-menu");
+const mobileMenu = document.getElementById("mobileMenu");
+
+// Open Menu
+menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    mobileMenu.classList.remove("hidden");
+});
+
+// Close Menu Button
+closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden");
+});
+
+// Click Outside Menu
+document.addEventListener("click", (e) => {
+
+    if (
+        !mobileMenu.contains(e.target) &&
+        !menuBtn.contains(e.target)
+    ) {
+        mobileMenu.classList.add("hidden");
+    }
+
+});
+
+
